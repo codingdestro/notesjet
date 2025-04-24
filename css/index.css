@@ -43,18 +43,40 @@
   /* Red */
   --color-text-red: #e03e3e;
   --color-bg-red: #fbe4e4;
+  /* size */
+  --width: 600px;
+  --height: 500px;
 }
 body {
-  padding: 1.5rem;
+  padding: 8px 16px;
   width: 600px;
   height: 500px;
   background-color: white;
   font-family: sans-serif;
 }
+.hidden {
+  display: none;
+}
 
 .logo {
   font-weight: 700;
   font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px;
+}
+.back-btn {
+  border: none;
+  outline: none;
+  background-image: url("../icons/left-arrow.png");
+  background-position: center;
+  background-size: 40%;
+  background-repeat: no-repeat;
+  width: 28px;
+  aspect-ratio: 1/1;
+  border-radius: 8px;
+  cursor: pointer;
 }
 
 .container {
@@ -121,6 +143,15 @@ body {
 .card[data-color="green"] {
   background-color: var(--color-bg-green);
 }
+.card[data-color="gray"] {
+  background-color: var(--color-bg-gray);
+}
+.card[data-color="yellow"] {
+  background-color: var(--color-bg-yellow);
+}
+.card[data-color="purple"] {
+  background-color: var(--color-bg-purple);
+}
 
 .add-btn {
   width: 48px;
@@ -139,4 +170,62 @@ body {
   top: 50%;
   left: 50%;
   translate: -50% -50%;
+}
+
+.create-note-nav {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.create-note-nav button {
+  height: 55px;
+  aspect-ratio: 1/1;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+#menu-btn {
+  cursor: pointer;
+  background-image: url("../icons/menu.png");
+  background-position: center;
+  background-size: 40%;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+.create-note {
+  padding: 12px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.create-note input {
+  width: 100%;
+  outline: none;
+  border: 1px solid var(--color-bg-green);
+  background-color: var(--color-bg-green);
+  font-weight: 700px;
+  font-size: 18px;
+  padding: 16px;
+  border-radius: 8px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.create-note textarea {
+  border: none;
+  outline: none;
+  padding: 16px;
+  border-radius: 8px;
+  background-color: var(--color-bg-yellow);
+  width: 100%;
+  height: 400px;
+  box-sizing: border-box;
+  resize: none;
 }

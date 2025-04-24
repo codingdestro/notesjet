@@ -5,12 +5,24 @@
     <link rel="stylesheet" href="css/index.css" />
   </head>
   <body>
-    <h2 class="logo">Notes</h2>
+    <h2 class="logo">
+      <button class="back-btn"></button>
+      <span>Notes</span>
+    </h2>
     <main class="main">
       <!-- <div id="create-card" class="container card">
         <button class="add-btn"></button>
       </div> -->
       <!-- <div class="notes-grid" id="notes"></div> -->
+      <div class="create-note" id="create-note">
+        <div class="create-note-nav">
+          <input type="text" placeholder="Title" />
+          <button id="menu-btn">
+            <div class="menu-items"></div>
+          </button>
+        </div>
+        <textarea></textarea>
+      </div>
     </main>
     <script src="/utils/jquery.min.js"></script>
     <script src="popup.js"></script>
