@@ -5,25 +5,30 @@
     <link rel="stylesheet" href="css/index.css" />
   </head>
   <body>
+    <!-- if there is no note (first time) -->
+    <div id="create-card" class="container card" style="display: none">
+      <button class="add-btn"></button>
+    </div>
+
+    <!-- listing of notes -->
+    <div class="notes-grid" id="notes" style="display: none"></div>
+
+    <!-- create note component -->
+    <div class="create-note" id="create-note" style="display: none">
+      <div class="create-note-nav">
+        <input type="text" placeholder="Title" />
+        <button id="menu-btn">
+          <div class="menu-items"></div>
+        </button>
+      </div>
+      <textarea></textarea>
+    </div>
+
     <h2 class="logo">
       <button class="back-btn"></button>
       <span>Notes</span>
     </h2>
-    <main class="main">
-      <!-- <div id="create-card" class="container card">
-        <button class="add-btn"></button>
-      </div> -->
-      <!-- <div class="notes-grid" id="notes"></div> -->
-      <div class="create-note" id="create-note">
-        <div class="create-note-nav">
-          <input type="text" placeholder="Title" />
-          <button id="menu-btn">
-            <div class="menu-items"></div>
-          </button>
-        </div>
-        <textarea></textarea>
-      </div>
-    </main>
+    <main class="main" id="main"></main>
     <script src="/utils/jquery.min.js"></script>
     <script src="popup.js"></script>
   </body>
