@@ -1,16 +1,16 @@
-let Notes = [
-];
+let Notes = [];
 
 let currentPage = 0;
 
 async function loadUserNotes() {
-  const {notes} = await chrome.storage.local.get(["notes"]);
-Notes = JSON.parse(notes);
+  const { notes } = await chrome.storage.local.get(["notes"]);
+  if (!notes) return;
+  Notes = JSON.parse(notes);
 }
 
 async function saveUserNote(notes) {
   Notes.push(notes);
-  await chrome.storage.local.set({ "notes": JSON.stringify(Notes) });
+  await chrome.storage.local.set({ notes: JSON.stringify(Notes) });
 }
 
 $("#back-btn").on("click", () => {
@@ -25,10 +25,15 @@ $("#back-btn").on("click", () => {
 
 function listNotesCompnent() {
   const component = $("#notes").clone();
+  component.find(".add-btn").on("click", () => {
+    currentPage++;
+    render(notesComponent());
+  });
+
   component.css("display", "grid");
   for (let i = 0; i < Notes.length; i++) {
     const card = $(
-      `<div class='card card-content' data-color="${Notes[i].color}"><p>${Notes[i].note}</p></div>`
+      `<div class='card card-content' data-color="${Notes[i].color}"><p>${Notes[i].title}</p></div>`
     );
     component.append(card);
   }
@@ -77,6 +82,7 @@ function render(component) {
 
 loadUserNotes().then(() => {
   if (Notes.length <= 0) render(createNoteComponent());
-  // render(listNotesCompnent());
-  render(createNoteComponent());
+  else render(listNotesCompnent());
+  // else
+  // render(createNoteComponent());
 });
