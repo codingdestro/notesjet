@@ -97,11 +97,11 @@
 }
 
 .icon-save::before {
-  content: "💾";
+  content: "sv";
   font-size: 14px;
 }
 
 .icon-delete::before {
-  content: "🗑️";
+  content: "del";
   font-size: 14px;
 }

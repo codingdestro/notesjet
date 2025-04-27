@@ -1,48 +1,25 @@
-const Notes = [
-  {
-    title: "Learn jQuery",
-    note: "Understand how to create and manipulate DOM elements.",
-    color: "red",
-  },
-  {
-    title: "Practice JavaScript",
-    note: "Solve problems daily to get better at logic.",
-    color: "purple",
-  },
-  {
-    title: "Build Projects",
-    note: "Start small projects like a todo app or notes app.",
-    color: "brown",
-  },
-  {
-    title: "Master Git",
-    note: "Learn basic commands like commit, push, pull, and branch.",
-    color: "blue",
-  },
-  {
-    title: "Explore React",
-    note: "Get familiar with components, props, and state.",
-    color: "red",
-  },
+let Notes = [
 ];
 
 let currentPage = 0;
 
 async function loadUserNotes() {
-  const userNote = await chrome.storage.local.get(["notes"]);
-  return JSON.parse(userNote);
+  const {notes} = await chrome.storage.local.get(["notes"]);
+Notes = JSON.parse(notes);
 }
 
 async function saveUserNote(notes) {
   Notes.push(notes);
-  await chrome.storage.local.set({ key: JSON.stringify(Notes) });
+  await chrome.storage.local.set({ "notes": JSON.stringify(Notes) });
 }
 
 $("#back-btn").on("click", () => {
   // console.log(currentPage)
-  if (currentPage == 1) {
+  if (currentPage == 1 && Notes.length == 0) {
     currentPage--;
     render(createNoteComponent());
+  } else {
+    render(listNotesCompnent());
   }
 });
 
@@ -66,6 +43,18 @@ function notesComponent() {
     if (!dropdownMenu) return;
     dropdownMenu.toggleClass("show");
   });
+
+  dropdownMenu.find("#save-btn").on("click", () => {
+    const val = component.find("textarea").val();
+    const title = component.find("input").val();
+    saveUserNote({
+      title,
+      note: val,
+      color: "red",
+    });
+    dropdownMenu.toggleClass("show");
+  });
+
   return component;
 }
 
@@ -86,6 +75,8 @@ function render(component) {
   $("#main").append(component);
 }
 
-if (Notes.length <= 0) render(createNoteComponent());
-// render(listNotesCompnent());
-render(createNoteComponent());
+loadUserNotes().then(() => {
+  if (Notes.length <= 0) render(createNoteComponent());
+  // render(listNotesCompnent());
+  render(createNoteComponent());
+});
