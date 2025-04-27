@@ -40,9 +40,11 @@ async function saveUserNote(notes) {
 
 $("#back-btn").on("click", () => {
   // console.log(currentPage)
-  if (currentPage == 1) {
+  if (currentPage == 1 && Notes.length == 0) {
     currentPage--;
     render(createNoteComponent());
+  } else {
+    render(listNotesCompnent());
   }
 });
 
@@ -66,6 +68,18 @@ function notesComponent() {
     if (!dropdownMenu) return;
     dropdownMenu.toggleClass("show");
   });
+
+  dropdownMenu.find("#save-btn").on("click", () => {
+    const val = component.find("textarea").val();
+    const title = component.find("input").val();
+    saveUserNote({
+      title,
+      note: val,
+      color: "red",
+    });
+    dropdownMenu.toggleClass("show");
+  });
+
   return component;
 }
 
