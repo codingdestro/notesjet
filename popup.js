@@ -61,6 +61,11 @@ function listNotesCompnent() {
 function notesComponent() {
   const component = $("#create-note").clone();
   component.css("display", "flex");
+  let dropdownMenu = component.find("#dropdownMenu");
+  component.find("#menuButton").on("click", () => {
+    if (!dropdownMenu) return;
+    dropdownMenu.toggleClass("show");
+  });
   return component;
 }
 

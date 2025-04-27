@@ -3,6 +3,7 @@
   <head>
     <title>Notes</title>
     <link rel="stylesheet" href="css/index.css" />
+    <link rel="stylesheet" href="css/menu.css" />
   </head>
   <body>
     <!-- if there is no note (first time) -->
@@ -17,9 +18,30 @@
     <div class="create-note" id="create-note" style="display: none">
       <div class="create-note-nav">
         <input type="text" placeholder="Title" />
-        <button id="menu-btn">
-          <div class="menu-items"></div>
-        </button>
+        <div class="menu-container">
+          <button class="menu-button" id="menuButton">
+            <div class="menu-icon">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </button>
+          <div class="dropdown-menu" id="dropdownMenu">
+            <div class="menu-item">
+              <i class="icon-create"></i>
+              Create New Note
+            </div>
+            <div class="menu-divider"></div>
+            <div class="menu-item">
+              <i class="icon-save"></i>
+              Save Note
+            </div>
+            <div class="menu-item">
+              <i class="icon-delete"></i>
+              Delete Note
+            </div>
+          </div>
+        </div>
       </div>
       <textarea></textarea>
     </div>
