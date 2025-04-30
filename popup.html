@@ -57,5 +57,17 @@
     <main class="main" id="main"></main>
     <script src="/utils/jquery.min.js"></script>
     <script src="popup.js"></script>
+
+    <!-- Delete Confirmation Modal -->
+    <div class="modal-overlay" id="deleteModal" style="display: none">
+      <div class="modal-content">
+        <h3>Delete Note</h3>
+        <p>Are you sure you want to delete this note? This action cannot be undone.</p>
+        <div class="modal-actions">
+          <button class="modal-btn cancel-btn">Cancel</button>
+          <button class="modal-btn delete-btn">Delete</button>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

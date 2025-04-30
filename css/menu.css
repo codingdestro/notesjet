@@ -5,29 +5,32 @@
   box-sizing: border-box;
   display: flex;
   size: 1;
-  transition: 1s;
+  transition: transform 0.2s ease;
 }
 
 .menu-button:active {
-  size: 0.6;
+  transform: scale(0.95);
 }
 
 .menu-button {
-  background-color: #4285f4;
+  background-color: var(--color-bg-blue);
   color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: 8px;
   padding: 8px 12px;
   cursor: pointer;
   font-size: 14px;
   display: flex;
   align-items: center;
   gap: 5px;
-  transition: background-color 0.2s;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+  box-shadow: var(--shadow-sm);
 }
 
 .menu-button:hover {
-  background-color: #3367d6;
+  background-color: var(--color-text-blue);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
 }
 
 .menu-icon {
@@ -43,6 +46,11 @@
   height: 2px;
   width: 100%;
   background-color: white;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.menu-button:hover .menu-icon span {
+  background-color: white;
 }
 
 .dropdown-menu {
@@ -50,12 +58,25 @@
   top: 40px;
   left: -200px;
   background-color: white;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  border-radius: 4px;
+  box-shadow: var(--shadow-lg);
+  border-radius: 12px;
   width: 200px;
   display: none;
   z-index: 10;
   overflow: hidden;
+  transform-origin: top right;
+  animation: dropdownFadeIn 0.2s ease;
+}
+
+@keyframes dropdownFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 .dropdown-menu.show {
@@ -66,27 +87,30 @@
   padding: 12px 16px;
   display: flex;
   align-items: center;
-  gap: 10px;
-  color: #333;
+  gap: 12px;
+  color: var(--color-text-default);
   text-decoration: none;
-  transition: background-color 0.2s;
+  transition: background-color 0.2s ease;
   cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
 }
 
 .menu-item:hover {
-  background-color: #f0f0f0;
+  background-color: var(--color-bg-gray);
 }
 
 .menu-item i {
   font-size: 16px;
   width: 18px;
   text-align: center;
+  color: var(--color-text-gray);
 }
 
 .menu-divider {
   height: 1px;
-  background-color: #e0e0e0;
-  margin: 5px 0;
+  background-color: var(--color-bg-gray);
+  margin: 4px 0;
 }
 
 /* Simple icons using CSS */
@@ -94,14 +118,17 @@
   content: "+";
   font-weight: bold;
   font-size: 18px;
+  color: var(--color-text-green);
 }
 
 .icon-save::before {
   content: "sv";
   font-size: 14px;
+  color: var(--color-text-blue);
 }
 
 .icon-delete::before {
   content: "del";
   font-size: 14px;
+  color: var(--color-text-red);
 }
