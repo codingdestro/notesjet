@@ -1,11 +1,14 @@
 {
   "manifest_version": 3,
-  "name": "Notes Extension",
+  "name": "NotesJet Manager Extension",
   "version": "1.0",
-  "description": "A Chrome extension for taking notes",
+  "description": "An elegant extension to organize notes in notebooks",
   "permissions": ["storage", "activeTab"],
+  "background": {
+    "service_worker": "background.js",
+    "scripts": ["background.js"]
+  },
   "action": {
-    "default_popup": "popup.html",
     "default_icon": {
       "48": "icons/icon.png"
     }
